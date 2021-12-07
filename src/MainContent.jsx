@@ -64,7 +64,11 @@ export class MainContent extends Component {
         <tr key={cust.id}>
         <td>{cust.id}</td>
         <td><img src={cust.photo} alt={cust.name} /></td>
-        <td>{cust.name}</td>
+        <td style={{
+          backgroundColor:(cust.name.startsWith('S'))?'green':'red'
+        }}>
+          {cust.name}
+        </td>
         <td>{this.getPhoneToRender(cust.phone)}</td>
         <td>{cust.address.city}</td>
         </tr>
