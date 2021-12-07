@@ -78,7 +78,9 @@ export class MainContent extends Component {
   }
 
   onChangePictureClick = (cust,index) => {
-    console.log(cust,index);
+    var custArr = this.state.customers
+    custArr[index].photo = "https://picsum.photos/id/104/60"
+    this.setState(custArr)
   }
 };
 
