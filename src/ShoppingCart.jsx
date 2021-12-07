@@ -15,9 +15,9 @@ export default class ShoppingCart extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h4>Shopping Cart</h4>
-        <ul>
+        <div className="row">
          {this.state.products.map((prod) => {
            return (<
              Product key={prod.id}
@@ -27,7 +27,7 @@ export default class ShoppingCart extends Component {
              quantity={prod.quantity}
            />)
          })}
-        </ul>
+        </div>
       </div>
     )
   }
