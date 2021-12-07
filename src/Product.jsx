@@ -2,6 +2,13 @@ import React, {Component} from "react";
 
 export default class Product extends Component {
   render() {
-    return <div>Product {this.props.id}</div>
+    return (
+      <li>
+        Product #{this.props.id},
+        {this.props.productName},
+        {this.props.price},
+        {this.props.quantity}
+      </li>
+    )
   }
 }
