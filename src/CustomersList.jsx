@@ -77,7 +77,7 @@ export class CustomersList extends Component {
     }));
   }
 
-  onChangePictureClick = (cust,index) => {
+  onChangePictureClick = (_, index) => {
     var custArr = this.state.customers
     custArr[index].photo = "https://picsum.photos/id/104/60"
     this.setState(custArr)
