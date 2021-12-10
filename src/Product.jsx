@@ -22,10 +22,24 @@ export default class Product extends Component {
           <div className="card-footer">
             <div className="float-start">
               <span className="fw-bold me-3">Quantity:</span>
-              <span className="badge bg-secondary p-3 me-3">{this.state.product.quantity}</span>
+              <span className="badge bg-secondary p-3 me-3">
+                {this.state.product.quantity}
+              </span>
               <div className="btn-group">
-                <button className="btn btn-outline-success" onClick={this.props.onIncrement}>+</button>
-                <button className="btn btn-outline-success" onClick={this.props.onDecrement}>-</button>
+                <button className="btn btn-outline-success"
+                  onClick={() => {
+                    this.props.onIncrement(this.state.product)
+                  }}
+                >
+                  +
+                </button>
+                <button className="btn btn-outline-success"
+                  onClick={() => {
+                    this.props.onDecrement(this.state.product)
+                  }}
+                >
+                  -
+                </button>
               </div>
             </div>
             <div className="float-end">{this.props.children}</div>

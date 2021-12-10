@@ -34,11 +34,17 @@ export default class ShoppingCart extends Component {
     )
   }
 
-  handleIncrement = () => {
-    console.log("Incremented")
+  handleIncrement = (prod) => {
+    let allProducts = [...this.state.products] // copy the array
+    let index = allProducts.indexOf(prod)
+    allProducts[index].quantity++
+    this.setState({ products: allProducts })
   }
 
-  handleDecrement = () => {
-    console.log("Decremented")
+  handleDecrement = (prod) => {
+    let allProducts = [...this.state.products] // copy the array
+    let index = allProducts.indexOf(prod)
+    allProducts[index].quantity--
+    this.setState({ products: allProducts })
   }
 }
