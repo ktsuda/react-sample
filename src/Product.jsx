@@ -11,7 +11,7 @@ export default class Product extends Component {
         <div className="card m-2">
           <div className="card-header">
             <div className="float-end">
-              <span className="fw-bold"
+              <span className="fw-bold hand-icon"
                 onClick={() => {
                   this.props.onDelete(this.state.product)
                 }}
