@@ -78,4 +78,9 @@ export default class Product extends Component {
   componentWillUnmount() {
     console.log('componentWillUnmount - Product')
   }
+
+  componentDidCatch(error, info) {
+    console.log('componentDidCatch - Product')
+    console.log(error, info)
+  }
 }

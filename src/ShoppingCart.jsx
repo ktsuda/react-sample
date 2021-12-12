@@ -54,6 +54,12 @@ export default class ShoppingCart extends Component {
     console.log('componentWillUnmount - ShoppingCart')
   }
 
+  componentDidCatch(error, info) {
+    console.log('componentDidCatch - ShoppingCart')
+    console.log(error, info)
+    localStorage.lastError = `${error}\n${JSON.stringify(info)}`
+  }
+
   handleIncrement = (prod, maxValue) => {
     let allProducts = [...this.state.products] // copy the array
     let index = allProducts.indexOf(prod)
