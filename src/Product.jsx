@@ -74,4 +74,8 @@ export default class Product extends Component {
     console.log('componentDidUpdate - Product',
       prevProps, prevState, this.props, this.state)
   }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount - Product')
+  }
 }

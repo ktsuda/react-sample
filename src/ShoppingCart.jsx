@@ -50,6 +50,10 @@ export default class ShoppingCart extends Component {
       prevProps, prevState, this.props, this.state)
   }
 
+  componentWillUnmount() {
+    console.log('componentWillUnmount - ShoppingCart')
+  }
+
   handleIncrement = (prod, maxValue) => {
     let allProducts = [...this.state.products] // copy the array
     let index = allProducts.indexOf(prod)
