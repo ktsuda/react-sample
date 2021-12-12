@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard"
 import Login from "./Login"
 import ShoppingCart from "./ShoppingCart";
 import CustomersList from "./CustomersList"
+import NoMatchPage from "./NoMatchPage"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 export default class App extends Component {
@@ -16,6 +17,7 @@ export default class App extends Component {
           <Route path="/dashboard" exact element={<Dashboard />} />
           <Route path="/customers" exact element={<CustomersList />} />
           <Route path="/cart" exact element={<ShoppingCart />} />
+          <Route path="*" element={<NoMatchPage />} />
         </Routes>
       </BrowserRouter >
     );
