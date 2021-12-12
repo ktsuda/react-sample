@@ -8,20 +8,41 @@ import NoMatchPage from "./NoMatchPage"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 export default class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      token: ""
+    }
+  }
+
   render() {
-    return (
-      <BrowserRouter>
-        <NavBar />
+    if (!this.state.token) {
+      return (
         <div className="container-fluid">
-          <Routes>
-            <Route path="/" exact element={<Login />} />
-            <Route path="/dashboard" exact element={<Dashboard />} />
-            <Route path="/customers" exact element={<CustomersList />} />
-            <Route path="/cart" exact element={<ShoppingCart />} />
-            <Route path="*" element={<NoMatchPage />} />
-          </Routes>
+          <Login setToken={this.setToken} />
         </div>
-      </BrowserRouter >
-    )
+      )
+    } else {
+      return (
+        <BrowserRouter>
+          <NavBar />
+          <div className="container-fluid">
+            <Routes>
+              <Route path="/" exact element={<Dashboard />} />
+              <Route path="/customers" exact element={<CustomersList />} />
+              <Route path="/cart" exact element={<ShoppingCart />} />
+              <Route path="*" element={<NoMatchPage />} />
+            </Routes>
+          </div>
+        </BrowserRouter >
+      )
+    }
+  }
+
+  setToken = (token) => {
+    if (token) {
+      this.setState({ token: token })
+    }
   }
 }

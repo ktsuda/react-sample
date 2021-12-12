@@ -15,7 +15,7 @@ export default class Login extends Component {
     return (
       <React.StrictMode>
         <h4 className="m-1 p-2 border-bottom">Login</h4>
-        <div className="form-group form-row">
+        <div className="form-group form-row m-1 p-2">
           <label className="col-lg-4">Email:</label>
           <input type="text" className="form-control" value={this.state.email}
             onChange={(event) => {
@@ -23,7 +23,7 @@ export default class Login extends Component {
             }}
           />
         </div>
-        <div className="form-group form-row">
+        <div className="form-group form-row m-1 p-2">
           <label className="col-lg-4">Password:</label>
           <input type="password" className="form-control"
             value={this.state.password}
@@ -32,14 +32,20 @@ export default class Login extends Component {
             }}
           />
         </div>
-        <div className="text-end">
+        <div className="text-end m-1 p-2">
           {this.state.message}
-          <button className="btn btn-primary" onClick={this.onLoginClick}>
+          <button className="btn btn-primary" onClick={this.onLoginClick}
+            disabled={!this.validateForm()}
+          >
             Login
           </button>
         </div>
       </React.StrictMode>
     )
+  }
+
+  validateForm() {
+    return this.state.email.length > 0 && this.state.password.length > 0
   }
 
   onLoginClick = async () => {
@@ -51,6 +57,7 @@ export default class Login extends Component {
       this.setState({
         message: <span className="text-success me-2">Successfully Logged-in</span>
       })
+      this.props.setToken(body[0].email)
     } else {
       this.setState({
         message: <span className="text-danger me-2">Invalid login, please try again</span>
