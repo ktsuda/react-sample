@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 
 export default class Product extends Component {
-  state = {
-    product: this.props.product,
+  constructor(props) {
+    console.log('constructor - Product')
+    super(props)
+
+    this.state = {
+      product: props.product,
+    }
   }
 
   render() {
+    console.log('render - Product')
     return (
       <div className="col-lg-6">
         <div className="card m-2">
@@ -58,5 +64,14 @@ export default class Product extends Component {
         </div>
       </div>
     )
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount - Product')
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate - Product',
+      prevProps, prevState, this.props, this.state)
   }
 }
