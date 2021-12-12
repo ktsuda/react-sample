@@ -34,16 +34,11 @@ export default class ShoppingCart extends Component {
     )
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
     // console.log('componentDidMount - ShoppingCart')
-    var promise = fetch("http://localhost:5000/products", { method: "GET" })
-    promise.then((resp) => {
-      var promise2 = resp.json()
-      promise2.then((prods) => {
-        this.setState({ products: prods })
-      })
-    })
-
+    var resp = await fetch("http://localhost:5000/products", { method: "GET" })
+    var prods = await resp.json()
+    this.setState({ products: prods })
   }
 
   // componentDidUpdate(prevProps, prevState) {
