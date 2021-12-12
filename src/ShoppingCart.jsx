@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import Product from "./Product";
+import React, { Component } from "react"
+import Product from "./Product"
 
 export default class ShoppingCart extends Component {
   constructor(props) {
-    // console.log('constructor - ShoppingCart')
     super(props)
 
     this.state = {
@@ -12,7 +11,6 @@ export default class ShoppingCart extends Component {
   }
 
   render() {
-    // console.log('render - ShoppingCart')
     return (
       <React.StrictMode>
         <h4 className="m-1 p-2 border-bottom">Shopping Cart</h4>
@@ -35,26 +33,10 @@ export default class ShoppingCart extends Component {
   }
 
   componentDidMount = async () => {
-    // console.log('componentDidMount - ShoppingCart')
     var resp = await fetch("http://localhost:5000/products", { method: "GET" })
     var prods = await resp.json()
     this.setState({ products: prods })
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log('componentDidUpdate - ShoppingCart',
-  //     prevProps, prevState, this.props, this.state)
-  // }
-
-  // componentWillUnmount() {
-  //   console.log('componentWillUnmount - ShoppingCart')
-  // }
-
-  // componentDidCatch(error, info) {
-  //   console.log('componentDidCatch - ShoppingCart')
-  //   console.log(error, info)
-  //   localStorage.lastError = `${error}\n${JSON.stringify(info)}`
-  // }
 
   handleIncrement = (prod, maxValue) => {
     let allProducts = [...this.state.products] // copy the array
@@ -66,7 +48,7 @@ export default class ShoppingCart extends Component {
   }
 
   handleDecrement = (prod, minValue) => {
-    let allProducts = [...this.state.products] // copy the array
+    let allProducts = [...this.state.products]
     let index = allProducts.indexOf(prod)
     if (allProducts[index].quantity > minValue) {
       allProducts[index].quantity--
@@ -75,7 +57,7 @@ export default class ShoppingCart extends Component {
   }
 
   handleDelete = (prod) => {
-    let allProducts = [...this.state.products] // copy the array
+    let allProducts = [...this.state.products]
     let index = allProducts.indexOf(prod)
     allProducts.splice(index, 1)
     this.setState({ products: allProducts })

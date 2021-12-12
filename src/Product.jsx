@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 export default class Product extends Component {
   constructor(props) {
-    // console.log('constructor - Product')
     super(props)
 
     this.state = {
@@ -11,7 +10,6 @@ export default class Product extends Component {
   }
 
   render() {
-    // console.log('render - Product')
     return (
       <div className="col-lg-6">
         <div className="card m-2">
@@ -65,22 +63,4 @@ export default class Product extends Component {
       </div>
     )
   }
-
-  // componentDidMount() {
-  //   console.log('componentDidMount - Product')
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log('componentDidUpdate - Product',
-  //     prevProps, prevState, this.props, this.state)
-  // }
-
-  // componentWillUnmount() {
-  //   console.log('componentWillUnmount - Product')
-  // }
-
-  // componentDidCatch(error, info) {
-  //   console.log('componentDidCatch - Product')
-  //   console.log(error, info)
-  // }
 }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
 export class CustomersList extends Component {
   state = {
@@ -11,7 +11,7 @@ export class CustomersList extends Component {
       { id: 4, photo: "https://picsum.photos/id/1013/60", name: "James", phone: "", address: { city: "London" } },
       { id: 5, photo: "https://picsum.photos/id/1014/60", name: "John", phone: "", address: { city: "Tokyo" } },
     ],
-  };
+  }
 
   render() {
     return (
@@ -41,8 +41,8 @@ export class CustomersList extends Component {
           </tbody>
         </table>
       </React.StrictMode>
-    );
-  };
+    )
+  }
 
   componentDidMount() {
     this.setState({ customersCount: this.state.customers.length })
@@ -69,22 +69,24 @@ export class CustomersList extends Component {
   }
 
   getCustomerRow = () => {
-    return (this.state.customers.map((cust, index) => {
-      return (
-        <tr key={cust.id}>
-          <td>{cust.id}</td>
-          <td>
-            <img src={cust.photo} alt={cust.name} />
-            <button className="btn btn-sm btn-secondary" onClick={() => {
-              this.onChangePictureClick(cust, index)
-            }}>Change Picture</button>
-          </td>
-          <td>{cust.name}</td>
-          <td>{this.getPhoneToRender(cust.phone)}</td>
-          <td>{cust.address.city}</td>
-        </tr>
-      );
-    }));
+    return (
+      this.state.customers.map((cust, index) => {
+        return (
+          <tr key={cust.id}>
+            <td>{cust.id}</td>
+            <td>
+              <img src={cust.photo} alt={cust.name} />
+              <button className="btn btn-sm btn-secondary" onClick={() => {
+                this.onChangePictureClick(cust, index)
+              }}>Change Picture</button>
+            </td>
+            <td>{cust.name}</td>
+            <td>{this.getPhoneToRender(cust.phone)}</td>
+            <td>{cust.address.city}</td>
+          </tr>
+        )
+      })
+    )
   }
 
   onChangePictureClick = (_, index) => {
@@ -92,6 +94,6 @@ export class CustomersList extends Component {
     custArr[index].photo = "https://picsum.photos/id/104/60"
     this.setState(custArr)
   }
-};
+}
 
-export default CustomersList;
+export default CustomersList
