@@ -3,7 +3,7 @@ import Product from "./Product";
 
 export default class ShoppingCart extends Component {
   constructor(props) {
-    console.log('constructor - ShoppingCart')
+    // console.log('constructor - ShoppingCart')
     super(props)
 
     this.state = {
@@ -19,7 +19,7 @@ export default class ShoppingCart extends Component {
   }
 
   render() {
-    console.log('render - ShoppingCart')
+    // console.log('render - ShoppingCart')
     return (
       <div className="container">
         <h4>Shopping Cart</h4>
@@ -41,24 +41,24 @@ export default class ShoppingCart extends Component {
     )
   }
 
-  componentDidMount() {
-    console.log('componentDidMount - ShoppingCart')
-  }
+  // componentDidMount() {
+  //   console.log('componentDidMount - ShoppingCart')
+  // }
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate - ShoppingCart',
-      prevProps, prevState, this.props, this.state)
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('componentDidUpdate - ShoppingCart',
+  //     prevProps, prevState, this.props, this.state)
+  // }
 
-  componentWillUnmount() {
-    console.log('componentWillUnmount - ShoppingCart')
-  }
+  // componentWillUnmount() {
+  //   console.log('componentWillUnmount - ShoppingCart')
+  // }
 
-  componentDidCatch(error, info) {
-    console.log('componentDidCatch - ShoppingCart')
-    console.log(error, info)
-    localStorage.lastError = `${error}\n${JSON.stringify(info)}`
-  }
+  // componentDidCatch(error, info) {
+  //   console.log('componentDidCatch - ShoppingCart')
+  //   console.log(error, info)
+  //   localStorage.lastError = `${error}\n${JSON.stringify(info)}`
+  // }
 
   handleIncrement = (prod, maxValue) => {
     let allProducts = [...this.state.products] // copy the array
