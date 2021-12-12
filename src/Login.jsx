@@ -13,7 +13,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="col-lg-9">
+      <React.StrictMode>
         <h4 className="m-1 p-2 border-bottom">Login</h4>
         <div className="form-group form-row">
           <label className="col-lg-4">Email:</label>
@@ -38,7 +38,7 @@ export default class Login extends Component {
             Login
           </button>
         </div>
-      </div>
+      </React.StrictMode>
     )
   }
 

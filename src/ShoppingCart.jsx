@@ -14,8 +14,8 @@ export default class ShoppingCart extends Component {
   render() {
     // console.log('render - ShoppingCart')
     return (
-      <div className="container">
-        <h4>Shopping Cart</h4>
+      <React.StrictMode>
+        <h4 className="m-1 p-2 border-bottom">Shopping Cart</h4>
         <div className="row">
           {this.state.products.map((prod) => {
             return (
@@ -30,7 +30,7 @@ export default class ShoppingCart extends Component {
             )
           })}
         </div>
-      </div>
+      </React.StrictMode>
     )
   }
 

@@ -12,13 +12,15 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <NavBar />
-        <Routes>
-          <Route path="/" exact element={<Login />} />
-          <Route path="/dashboard" exact element={<Dashboard />} />
-          <Route path="/customers" exact element={<CustomersList />} />
-          <Route path="/cart" exact element={<ShoppingCart />} />
-          <Route path="*" element={<NoMatchPage />} />
-        </Routes>
+        <div className="container-fluid">
+          <Routes>
+            <Route path="/" exact element={<Login />} />
+            <Route path="/dashboard" exact element={<Dashboard />} />
+            <Route path="/customers" exact element={<CustomersList />} />
+            <Route path="/cart" exact element={<ShoppingCart />} />
+            <Route path="*" element={<NoMatchPage />} />
+          </Routes>
+        </div>
       </BrowserRouter >
     );
   };

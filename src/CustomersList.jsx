@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class CustomersList extends Component {
   state = {
     pageTitle: "Customers",
-    customersCount: 5,
+    customersCount: 0,
     customers: [
       { id: 1, photo: "https://picsum.photos/id/1010/60", name: "Scott", phone: "123-456", address: { city: "New Delhi" } },
       { id: 2, photo: "https://picsum.photos/id/1011/60", name: "Jones", phone: "982-014", address: { city: "New York" } },
@@ -16,12 +16,12 @@ export class CustomersList extends Component {
   render() {
     return (
       <React.StrictMode>
-        <h4 className="border-bottom m-1 p-1">
+        <h4 className="border-bottom m-1 p-2">
           {this.state.pageTitle}
-          <span className="badge bg-secondary m-2">
+          <span className="ms-2">
             {this.state.customersCount}
           </span>
-          <button className="btn btn-info" onClick={this.onRefreshClick}>
+          <button className="btn btn-info pt-0 pb-0 ms-2" onClick={this.onRefreshClick}>
             Refresh
           </button>
         </h4>
@@ -44,9 +44,19 @@ export class CustomersList extends Component {
     );
   };
 
+  componentDidMount() {
+    this.setState({ customersCount: this.state.customers.length })
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.customersCount !== this.state.customers.length) {
+      this.setState({ customersCount: this.state.customers.length })
+    }
+  }
+
   onRefreshClick = () => {
     this.setState({
-      customersCount: 7,
+      customersCount: this.state.customers.length,
     })
   }
 
