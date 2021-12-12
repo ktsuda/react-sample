@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
-// import ShoppingCart from "./ShoppingCart";
-// import Login from "./Login"
 import Dashboard from "./Dashboard"
+import Login from "./Login"
+import ShoppingCart from "./ShoppingCart";
+import CustomersList from "./CustomersList"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 export default class App extends Component {
   render() {
     return (
-      <React.StrictMode>
+      <BrowserRouter>
         <NavBar />
-        {
-          // <ShoppingCart />
-          //<Login />
-        }
-      <Dashboard />
-      </React.StrictMode>
+        <Routes>
+          <Route path="/" exact element={<Login />} />
+          <Route path="/dashboard" exact element={<Dashboard />} />
+          <Route path="/customers" exact element={<CustomersList />} />
+          <Route path="/cart" exact element={<ShoppingCart />} />
+        </Routes>
+      </BrowserRouter >
     );
   };
 };
