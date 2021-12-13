@@ -45,7 +45,7 @@ export default class Login extends Component {
   }
 
   validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0
+    return this.state.email.includes('@') > 0 && this.state.password.length > 6
   }
 
   onLoginClick = async () => {
@@ -53,7 +53,7 @@ export default class Login extends Component {
       { method: "GET" }
     )
     var body = await resp.json()
-    if (body.length > 0) {
+    if (body.length === 1) {
       this.setState({
         message: <span className="text-success me-2">Successfully Logged-in</span>
       })

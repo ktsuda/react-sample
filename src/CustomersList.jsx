@@ -44,16 +44,6 @@ export class CustomersList extends Component {
     )
   }
 
-  componentDidMount() {
-    this.setState({ customersCount: this.state.customers.length })
-  }
-
-  componentDidUpdate(_, prevState) {
-    if (prevState.customersCount !== this.state.customers.length) {
-      this.setState({ customersCount: this.state.customers.length })
-    }
-  }
-
   onRefreshClick = () => {
     this.setState({
       customersCount: this.state.customers.length,

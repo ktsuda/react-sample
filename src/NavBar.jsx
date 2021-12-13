@@ -14,13 +14,16 @@ export class NavBar extends Component {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">Dashboard</Link>
+                  <Link className="nav-link" to="/dashboard">Dashboard</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/customers">Customers</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/cart">Shopping Cart</Link>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/login" onClick={this.props.removeToken}>Logout</a>
                 </li>
               </ul>
             </div>

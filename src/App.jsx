@@ -5,7 +5,7 @@ import Login from "./Login"
 import ShoppingCart from "./ShoppingCart"
 import CustomersList from "./CustomersList"
 import NoMatchPage from "./NoMatchPage"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
 
 export default class App extends Component {
   constructor(props) {
@@ -17,32 +17,38 @@ export default class App extends Component {
   }
 
   render() {
-    if (!this.state.token) {
-      return (
+    return (
+      <Router>
+      {this.state.token && <NavBar removeToken={this.removeToken} />}
         <div className="container-fluid">
-          <Login setToken={this.setToken} />
+          <Routes>
+            {!this.state.token && <Route path="*" element={<Navigate to="/login" />} />}
+            {!this.state.token && <Route path="/login" element={<Login setToken={this.setToken} />} />}
+            {this.state.token && <Route path="*" element={<Navigate to="/dashboard" />} />}
+            {this.state.token && <Route path="/dashboard" element={<Dashboard />} />}
+            {this.state.token && <Route path="/customers" element={<CustomersList />} />}
+            {this.state.token && <Route path="/cart" element={<ShoppingCart />} />}
+          </Routes>
         </div>
-      )
-    } else {
-      return (
-        <BrowserRouter>
-          <NavBar />
-          <div className="container-fluid">
-            <Routes>
-              <Route path="/" exact element={<Dashboard />} />
-              <Route path="/customers" exact element={<CustomersList />} />
-              <Route path="/cart" exact element={<ShoppingCart />} />
-              <Route path="*" element={<NoMatchPage />} />
-            </Routes>
-          </div>
-        </BrowserRouter >
-      )
+      </Router>
+    )
+  }
+
+  componentDidMount() {
+    const cached_token = localStorage.getItem("LoginToken")
+    if (cached_token !== null) {
+      this.setToken(cached_token)
     }
   }
 
   setToken = (token) => {
     if (token) {
       this.setState({ token: token })
+      localStorage.setItem("LoginToken", token)
     }
+  }
+
+  removeToken = () => {
+    localStorage.removeItem("LoginToken")
   }
 }
